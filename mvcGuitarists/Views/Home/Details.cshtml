@@ -1,0 +1,53 @@
+﻿@model mvcGuitarists.Models.GuitaristTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="text-left">Artist Profile</h2>
+<hr />
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+            <img src="@Url.Content(Model.Image)" height="300" width="300" />
+        </div>
+
+        <div class="col-md-8">
+            <h3>@Html.DisplayFor(m => m.Name)</h3>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m => m.Roles):
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.Roles)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(m => m.MemberOf):
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.MemberOf)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(m => m.Genre):
+                </dt>
+                <dd>
+                    @Html.DisplayFor(m => m.Genre)
+                </dd>
+            </dl>
+
+            <div>
+                @Html.ActionLink("Edit Profile", "Edit", new { id = Model.Id }, new { @class = "btn" })
+                &nbsp;
+                @Html.ActionLink("Delete Artist", "Delete", new { id = Model.Id }, new { @class = "btn" })
+                &nbsp;
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

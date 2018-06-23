@@ -1,0 +1,101 @@
+﻿@model IEnumerable<mvcGuitarists.Models.GuitaristTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-left">
+    <h2>Artist List</h2>
+    <hr />
+    @Html.ActionLink("Create New Artist", "Create", null, new { @class = "btn" })
+</div>
+<br />
+<p>
+    
+  
+</p>
+@using (Html.BeginForm("Index", "Home", FormMethod.Get)) //this overloaded BeginForm method adds selected Genre & search string to the URL
+{
+    
+    <p>
+        @*Sort By: @Html.DropDownList("sort")
+        &nbsp;
+        <input type="submit" value="Sort" class="btn" />
+        &nbsp;&nbsp;*@
+        Genre: @Html.DropDownList("guitaristGenre", "All")
+        &nbsp;&nbsp;
+        Name: @Html.TextBox("SearchString")
+        &nbsp;
+        <input type="submit" value="filter" class="btn" />
+    </p>
+}
+<br />
+
+
+@*-------------------------------------------DISPLAY LIST AS IMAGES---------------------------------------*@
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-2 text-center imageLink">
+                <a href='@Url.Action("Details","Home", new { id = item.Id })'>
+                    <img src="@Url.Content(item.Image)" height="150" width="150" />
+                    <h4>@Html.DisplayFor(m => item.Name)</h4>
+                </a>
+                <br />
+            </div>
+        }
+    </div>
+</div>
+
+
+@*---------------------------------------------DISPLAY LIST AS TABLE---------------------------------------*@
+
+@*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Roles)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.MemberOf)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Genre)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Content(item.Image)" height="100" width="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Roles)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.MemberOf)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Genre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View Profile", "Details", new { id = item.Id }, new { @class = "hyperLink" })<br />
+                        @Html.ActionLink("Edit Profile", "Edit", new { id = item.Id }, new { @class = "hyperLink" })<br />
+                        @Html.ActionLink("Delete Artist", "Delete", new { id = item.Id }, new { @class = "hyperLink" })
+                    </td>
+                </tr>
+            }
+    </table>*@

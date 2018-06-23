@@ -1,0 +1,45 @@
+﻿body {
+    color: #e7dfdd;
+    background-color: #0e0b16;
+}
+
+h1 {
+    font-family: 'New Rocker', cursive;
+    color:lightskyblue;
+}
+
+h2, h3 {
+    color:lightskyblue;
+}
+
+.imageLink {
+    transition: transform .2s;
+}
+
+    .imageLink:hover, .imageLink a:hover {
+        transform: scale(1.1);
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+.btn {
+    color: #e7dfdd;
+    background-color: #a239ca;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+    .btn:hover {
+        color: #a239ca;
+        background-color: #e7dfdd;
+    }
+
+/*STYLING FOR HOME LINK IN FOOTER SECTION*/
+a.hyperLink, h4 {
+    color: #a239ca;
+}
+
+    a.hyperLink:hover, h4:hover {
+        color: #e7dfdd;
+        text-decoration: none;
+    }
